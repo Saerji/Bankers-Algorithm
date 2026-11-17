@@ -1,5 +1,6 @@
 package src;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -62,81 +63,24 @@ public class Main {
         System.out.println("\n================ BANKER'S ALGORITHM ================\n");
         System.out.println("                    BASELINE TABLE\n");
 
-        // Table headers
-        System.out.printf("%-12s", "Process");
+        System.out.printf("%-12s %-18s %-18s %-18s%n",
+                "Process", "Allocation", "Max", "Need");
 
-        System.out.printf("%-20s", "Allocation");
-        System.out.printf("%-20s", "Max");
-        System.out.printf("%-20s%n", "Need");
-
-        // Resource labels
-        System.out.printf("%-12s", "");
-
-        for (int j = 0; j < resource; j++) {
-            System.out.printf("%-6s", "R" + j);
-        }
-        System.out.printf("%-2s", "");
-
-        for (int j = 0; j < resource; j++) {
-            System.out.printf("%-6s", "R" + j);
-        }
-        System.out.printf("%-2s", "");
-
-        for (int j = 0; j < resource; j++) {
-            System.out.printf("%-6s", "R" + j);
-        }
-
-        System.out.println();
         System.out.println("------------------------------------------------------------");
 
-        // Process rows
         for (int i = 0; i < processes; i++) {
-
-            System.out.printf("%-12s", "P" + i);
-
-            // Allocation
-            for (int j = 0; j < resource; j++) {
-                System.out.printf("%-6d", allocation[i][j]);
-            }
-            System.out.printf("%-2s", "");
-
-            // Max
-            for (int j = 0; j < resource; j++) {
-                System.out.printf("%-6d", max[i][j]);
-            }
-            System.out.printf("%-2s", "");
-
-            // Need
-            for (int j = 0; j < resource; j++) {
-                System.out.printf("%-6d", need[i][j]);
-            }
-
-            System.out.println();
+            System.out.printf("%-12s %-18s %-18s %-18s%n",
+                    "P" + i,
+                    Arrays.toString(allocation[i]),
+                    Arrays.toString(max[i]),
+                    Arrays.toString(need[i]));
         }
 
         System.out.println("------------------------------------------------------------");
 
-        // Resource summary
-        System.out.printf("%-12s", "Total");
-
-        for (int j = 0; j < resource; j++) {
-            System.out.printf("%-6d", total[j]);
-        }
-        System.out.println();
-
-        System.out.printf("%-12s", "Allocated");
-
-        for (int j = 0; j < resource; j++) {
-            System.out.printf("%-6d", totalAllocated[j]);
-        }
-        System.out.println();
-
-        System.out.printf("%-12s", "Available");
-
-        for (int j = 0; j < resource; j++) {
-            System.out.printf("%-6d", available[j]);
-        }
-        System.out.println();
+        System.out.println("Total Resources:  " + Arrays.toString(total));
+        System.out.println("Total Allocated:  " + Arrays.toString(totalAllocated));
+        System.out.println("Available:        " + Arrays.toString(available));
 
         System.out.println("============================================================");
         sc.close();
