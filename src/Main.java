@@ -83,6 +83,24 @@ public class Main {
         System.out.println("Available:        " + Arrays.toString(available));
 
         System.out.println("============================================================");
+
+        boolean[] result = banker.checkSafeState();
+
+        boolean safe = true;
+
+        for(boolean finished : result) {
+            if(!finished) {
+                safe = false;
+                break;
+            }
+        }
+
+        if(safe) {
+            System.out.println("The system is in SAFE state!");
+        } else {
+            System.out.println("The system is in UNSAFE.");
+        }
+
         sc.close();
     }
 }
